@@ -1,30 +1,12 @@
-const dotEnv = require('dotenv');
+const dotenv = require("dotenv");
 
-dotEnv.config();
+const connectToDatabase = require("./src/database/connect");
 
-const connectToDatabase = require('./src/database/connect');
+dotenv.config();
 
-// Test the database connection
-connectToDatabase()
-  .then((success) => {
-    if (success) {
-      console.log('Database connection successful!');
-    } else {
-      console.log('Database connection failed.');
-    }
-  })
-  .catch((err) => {
-    console.error('Error in connectToDatabase:', err);
-    console.error('Stack trace:', err.stack);
-  });
+connectToDatabase();
 
 const testConnection = require('./test-connection');
 testConnection()
-  .then(() => console.log('Test connection successful!'))
-  .catch((err) => console.error('Error in test connection:', err));
-
-// Remova ou comente as linhas abaixo, pois são duplicadas
-// const testConnection = require('./test-connection');
-// testConnection()
-// .then(() => console.log('Test connection successful!'))
-// .catch((err) => console.error('Error in test connection:', err));
+ .then(() => console.log('Test connection successful!'))
+ .catch((err) => console.error('Error in test connection:', err));

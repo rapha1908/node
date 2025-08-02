@@ -1,19 +1,12 @@
-const dotEnv = require('dotenv');
+const mongoose = require("mongoose");
 
-const mongoose = require('mongoose');
-dotEnv.config();
-
-async function connectToDatabase() {
-  console.log('connectToDatabase foi chamado');
+const connectToDatabase = async () => {
   try {
     await mongoose.connect(process.env.MONGODB_URI);
-    console.log('Successfully connected to MongoDB Atlas');
-    return true; // Indica sucesso
+    console.log("Conexão ao banco de dados realizada com sucesso!");
   } catch (error) {
-    console.error('Connection test failed:', error);
-    console.log('connectToDatabase deu ruim');
-    return false; // Indica falha
+    console.log("Ocorreu um erro ao se conectar com o banco de dados: ", error);
   }
-}
+};
 
 module.exports = connectToDatabase;
