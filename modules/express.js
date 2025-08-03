@@ -6,6 +6,14 @@ const app = express();
 
 app.use(express.json());
 
+app.set('view engine', 'ejs');
+app.set('views', 'src/views');
+
+app.get('/views/users', async(req, res) => {
+    const users = await UserModel.find({});
+    res.render('index', { users });
+});
+
 app.get('/home', (req, res) => {
     //res.contentType('test/html');
     res.status(200).send('<h1>Welcome to the Home Page!</h1>');
