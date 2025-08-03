@@ -12,7 +12,7 @@ connectToDatabase().then(() =>
 
 require("./modules/express");
 
-const testConnection = require('./test-connection');
-testConnection()
-.then(() => console.log('Test connection successful!'))
-.catch((err) => console.error('Error in test connection:', err));
+//const testConnection = require('./test-connection');
+//testConnection()
+//.then(() => console.log('Test connection successful!'))
+//.catch((err) => console.error('Error in test connection:', err));
