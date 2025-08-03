@@ -1,14 +1,14 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
 
-async function testConnection() {
+const testConnection = async () => {
   try {
-    await mongoose.connect(process.env.MONGODB_URI);
-    console.log('Successfully connected to MongoDB Atlas');
-    await mongoose.connection.close();
+    await mongoose.connect("mongodb+srv://raphasanti:oxL8MinbUg79GFB1@nodecourse.0e6f2o9.mongodb.net/meuDB?retryWrites=true&w=majority&appName=NodeCourse"
+);
+    console.log("Conectado ao MongoDB!");
   } catch (error) {
-    console.error('Connection test failed:', error);
+    console.error("Erro ao conectar ao MongoDB:", error);
   }
-}
+};
 
 module.exports = testConnection;  // Make sure this line is present
